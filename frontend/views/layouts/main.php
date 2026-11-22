@@ -77,7 +77,9 @@ $this->registerJs("if ($.fn.button && $.fn.button.noConflict) {
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup'],'forall'=>'true'];
     } else {
-        $menuItems[] = ['label' => 'Tipo libri', 'url' => ['/libro/tipolibro/lista','IdProfilo' => Yii::$app->user->identity->profilo->IdProfilo]];        
+        $menuItems[] = ['label' => 'Tipi libro', 'url' => ['/libro/tipolibro/lista','IdProfilo' => Yii::$app->user->identity->profilo->IdProfilo]];        
+        $menuItems[] = ['label' => 'Tipi Argomento', 'url' => ['/libro/tipoargomento/lista','IdProfilo' => Yii::$app->user->identity->profilo->IdProfilo]];        
+        $menuItems[] = ['label' => 'Collane', 'url' => ['/libro/collana/lista','IdProfilo' => Yii::$app->user->identity->profilo->IdProfilo]];        
         
         $menuItems[] = ['label' => 'Modifica profilo', 'url' => ['/abilitazione/profilo/view','IdProfilo' => Yii::$app->user->identity->profilo->IdProfilo]];        
         $menuItems[] = ['label' => 'Utenti', 'url' => ['/user/lista']];        
