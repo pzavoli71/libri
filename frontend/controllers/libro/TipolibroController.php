@@ -5,7 +5,7 @@ namespace frontend\controllers\libro;
 use common\models\libro\TipoLibro;
 use common\models\libro\TipoLibroSearch;
 use yii\web\Controller;
-use frontend\controllers\BaseController;
+use common\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;

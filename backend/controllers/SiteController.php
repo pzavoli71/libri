@@ -3,6 +3,8 @@
 namespace backend\controllers;
 
 use common\models\LoginForm;
+use common\controllers\BaseController;
+
 use Yii;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -12,8 +14,9 @@ use yii\web\Response;
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
+	public $layout = "maintabs";
     /**
      * {@inheritdoc}
      */
@@ -28,7 +31,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index','home'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -51,6 +54,7 @@ class SiteController extends Controller
         return [
             'error' => [
                 'class' => \yii\web\ErrorAction::class,
+                'layout' => "main",
             ],
         ];
     }
@@ -65,6 +69,17 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+    /**
+     * Displays homepage.
+     *
+     * @return string
+     */
+    public function actionHome()
+    {
+        $this->layout = "main";
+        return $this->render('home');
+    }
+    
     /**
      * Login action.
      *

@@ -237,6 +237,16 @@ class User extends BaseModel implements IdentityInterface
         return $this->hasOne(Profilo::class, ['id' => 'id']);
     }
 
+        /**
+     * Gets query for [[Id0]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSoggetto()
+    {
+        return $this->hasOne(Soggetto::class, ['id' => 'id']);
+    }
+
     public function getGruppis()
     {
         return $this->hasMany(zutgr::class, ['id' => 'id']);

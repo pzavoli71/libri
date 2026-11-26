@@ -9,8 +9,16 @@ use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
+use common\components\NewNav;
 
 AppAsset::register($this);
+//Fix for closing icon (x) not showing up in dialog
+$this->registerJs("if ($.fn.button && $.fn.button.noConflict) {
+                var bootstrapButton = $.fn.button.noConflict(); 
+                $.fn.bootstrapBtn = bootstrapButton;
+            }",
+            \yii\web\View::POS_READY
+);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -27,20 +35,20 @@ AppAsset::register($this);
 
 <header>
     <?php
-    NavBar::begin([
+    /*NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
-    ]);
+    ]);*/
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     }     
-    echo Nav::widget([
+    /*echo Nav::widget([
         'options' => ['class' => 'navbar-nav me-auto mb-2 mb-md-0'],
         'items' => $menuItems,
     ]);
@@ -54,7 +62,7 @@ AppAsset::register($this);
             )
             . Html::endForm();
     }
-    NavBar::end();
+    NavBar::end();*/
     ?>
 </header>
 
